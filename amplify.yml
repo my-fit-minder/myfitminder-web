@@ -1,0 +1,31 @@
+version: 1
+frontend:
+  environment:
+    variables:
+      # Add your backend URL here (update this value with your Elastic Beanstalk URL)
+      NEXT_PUBLIC_API_URL: "https://myfitminder-backend-prod.eba-2yqgyy2x.us-west-2.elasticbeanstalk.com"
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+        - echo "Build completed, checking out folder..."
+        - ls -la out/ || echo "out folder not found"
+  artifacts:
+    baseDirectory: out
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
+  customHeaders:
+    - pattern: "**/*"
+      headers:
+        - key: "X-Content-Type-Options"
+          value: "nosniff"
+        - key: "X-Frame-Options"
+          value: "DENY"
+        - key: "X-XSS-Protection"
+          value: "1; mode=block"

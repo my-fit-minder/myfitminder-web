@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <nav className="bg-background-card border-b border-background-card/50">
@@ -19,16 +19,18 @@ export default function Navbar() {
               height={40}
               className="rounded-lg"
             />
-            <span className="text-2xl font-bold text-primary-teal">MyFitMinder</span>
+            <span className="text-2xl font-bold text-primary-teal">
+              MyFitMinder
+            </span>
           </Link>
-          
+
           <div className="flex items-center space-x-6">
             <Link
               href="/"
               className={`text-sm font-medium transition-colors ${
-                pathname === '/'
-                  ? 'text-primary-teal'
-                  : 'text-text-secondary hover:text-text-primary'
+                pathname === "/"
+                  ? "text-primary-teal"
+                  : "text-text-secondary hover:text-text-primary"
               }`}
             >
               How It Works
@@ -36,9 +38,9 @@ export default function Navbar() {
             <Link
               href="/privacy"
               className={`text-sm font-medium transition-colors ${
-                pathname === '/privacy'
-                  ? 'text-primary-teal'
-                  : 'text-text-secondary hover:text-text-primary'
+                pathname === "/privacy"
+                  ? "text-primary-teal"
+                  : "text-text-secondary hover:text-text-primary"
               }`}
             >
               Privacy Policy
@@ -46,17 +48,26 @@ export default function Navbar() {
             <Link
               href="/terms"
               className={`text-sm font-medium transition-colors ${
-                pathname === '/terms'
-                  ? 'text-primary-teal'
-                  : 'text-text-secondary hover:text-text-primary'
+                pathname === "/terms"
+                  ? "text-primary-teal"
+                  : "text-text-secondary hover:text-text-primary"
               }`}
             >
               Terms of Service
+            </Link>
+            <Link
+              href="/contact"
+              className={`text-sm font-medium transition-colors ${
+                pathname === "/contact"
+                  ? "text-primary-teal"
+                  : "text-text-secondary hover:text-text-primary"
+              }`}
+            >
+              Contact Us
             </Link>
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }
-
